@@ -1,5 +1,5 @@
-import process from 'node:process'
-import { defineConfig, devices } from '@playwright/test'
+import process from 'node:process';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -14,7 +14,7 @@ export default defineConfig({
   testDir: './e2e',
   snapshotDir: './e2e/snapshots',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 10 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -51,7 +51,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome']
       }
-    },
+    }
     // {
     //   name: 'firefox',
     //   use: {
@@ -108,4 +108,4 @@ export default defineConfig({
     port: 5173,
     reuseExistingServer: !process.env.CI
   }
-})
+});
