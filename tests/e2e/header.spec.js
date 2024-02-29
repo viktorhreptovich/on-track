@@ -8,7 +8,7 @@ test.describe('Header test', () => {
     await expect(page.getByTestId('navigation-item-timeline-link')).toHaveClass(/bg-gray-200/);
   });
 
-  test.only('Click on progress should navigate to progress', async ({ page }) => {
+  test('Click on progress should navigate to progress', async ({ page }) => {
     await page.goto('/');
     await page.getByTestId('progress').click();
     await expect(page).toHaveURL('#progress');
