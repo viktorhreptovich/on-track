@@ -16,9 +16,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: https://viktorhreptovich.github.io/on-track/${{ github.run_number }}
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -38,9 +36,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-    - name: Deploy report to Github Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v3
-      env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_DIR: playwright-report
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: playwright-report/
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v2
