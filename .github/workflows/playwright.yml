@@ -14,7 +14,9 @@ jobs:
       contents: read
       pages: write
       id-token: write
-#    environment:
+    environment:
+      name: github-pages
+      url: https://viktorhreptovich.github.io/on-track/${{ github.run_number }}
 #      name: github-pages
 #      url: ${{ steps.deployment.outputs.page_url }}
     steps:
