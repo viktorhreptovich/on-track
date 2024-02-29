@@ -11,8 +11,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './e2e',
-  snapshotDir: './e2e/snapshots',
+  testDir: './tests/e2e',
+  snapshotDir: './tests/e2e/snapshots',
   /* Maximum time one test can run for. */
   timeout: 10 * 1000,
   expect: {
@@ -29,7 +29,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['json',{ outputFile: 'results.json' }],['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */

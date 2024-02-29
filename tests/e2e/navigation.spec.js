@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Navigation test', () => {
   test('Navigation should have 3 items: Timeline, Activities, Progress', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.getByTestId('navigation-item')).toHaveCount(3);
-    await expect(page.getByTestId('navigation-item')).toHaveText(
-      ['Timeline', 'Activities', 'Progress'],
-      { useInnerText: true }
-    );
+    await test.step('Open the site', async () => {
+      await page.goto('/');
+    });
+    await test.step('Navigation should have 3 items: Timeline, Activities, Progress', async () => {
+      await expect(page.getByTestId('navigation-item')).toHaveCount(3);
+      await expect(page.getByTestId('navigation-item')).toHaveText(['Timeline', 'Activities', 'Progress'], { useInnerText: true });
+    });
   });
 
   // test('Timeline item should have icon', async ({ page }) => {

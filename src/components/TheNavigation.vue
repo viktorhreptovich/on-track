@@ -1,14 +1,12 @@
 <script setup>
-import { ChartBarIcon, ClockIcon, ListBulletIcon } from '@heroicons/vue/24/outline/index.js';
-import NavigationItem from '@/components/NavigationItem.vue';
-import { ref } from 'vue';
 
-const navigationItems = [
-  { name: 'timeline', icon: ClockIcon, link: '#timeline' },
-  { name: 'activities', icon: ListBulletIcon, link: '#activities' },
-  { name: 'progress', icon: ChartBarIcon, link: '#progress' }
-];
-const currentPage = ref('timeline');
+import NavigationItem from '@/components/NavigationItem.vue';
+import { navigationItems } from '@/navigation.js';
+
+defineProps(['currentPage']);
+
+const emit = defineEmits(['navigate']);
+
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const currentPage = ref('timeline');
         :data-testid="`${item.name}-link`"
         :href="item.link"
         :class="{ 'bg-gray-200 pointer-events-none': item.name === currentPage }"
-        @click="currentPage = item.name"
+        @click="emit('navigate', item.name)"
       >
         <component :is="item.icon" class="h-6 w-6" />
         {{ item.name }}
