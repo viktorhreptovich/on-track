@@ -6,7 +6,7 @@ test.describe('TheNavigation component test', () => {
 
   test.use({ viewport: { width: 500, height: 500 } });
 
-  test('TheNavigation should have 3 items: Timeline, Activities, Progress', async ({ mount, page }) => {
+  test('TheNavigation should have 3 items: Timeline, Activities, Progress', async ({ mount,  }) => {
     const messages = [];
     const component = await mount(TheNavigation, {
       props: {
@@ -26,6 +26,6 @@ test.describe('TheNavigation component test', () => {
     await expect(component.getByTestId('navigation-item')).toHaveText(['Timeline', 'Activities', 'Progress'], { useInnerText: true });
 
     await component.getByTestId('activities-link').click();
-    await expect(messages).toEqual(['progress']);
+    await expect(messages).toEqual(['activities']);
   });
 });

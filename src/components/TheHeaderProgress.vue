@@ -1,10 +1,11 @@
 <script setup>
 import { CheckCircleIcon } from '@heroicons/vue/20/solid/index.js';
+import { navigationItems } from '@/navigation.js';
 </script>
 
 <template>
-  <a href="#" class="text-sm">
-    <div v-if="true" class="flex items-center gap-1">
+  <a :href="navigationItems.PROGRESS.link" class="text-sm">
+    <div v-if="false" class="flex items-center gap-1">
       Day complete!
       <div data-testid="check-circle-icon">
         <CheckCircleIcon class="h-7 text-green-500" />

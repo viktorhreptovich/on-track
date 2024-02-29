@@ -1,23 +1,17 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Header test', () => {
-  // test('logo should be visible', async ({ page }) => {
-  //   await page.goto('/');
-  //   await expect(page.getByTestId('logo')).toHaveScreenshot();
-  // });
-  //
-  // test('check circle icon should be visible', async ({ page }) => {
-  //   await page.goto('/');
-  //   const box = await page.getByTestId('check-circle-icon').boundingBox();
-  //   await expect(page).toHaveScreenshot('check-circle-icon.png', { clip: box });
-  // });
-  // test('progress should be equal 100%', async ({ page }) => {
-  //   await page.goto('/');
-  //   await expect(page.getByTestId('progress')).toHaveText('Progress: 20%');
-  // });
-  //
-  // test('progress indicator should be visible', async ({ page }) => {
-  //   await page.goto('/');
-  //   await expect(page.getByTestId('progress-indicator')).toHaveScreenshot();
-  // });
+  test('Click on logo should navigate to timeline', async ({ page }) => {
+    await page.goto('/#progress');
+    await page.getByTestId('logo').click();
+    await expect(page).toHaveURL('#timeline');
+    await expect(page.getByTestId('navigation-item-timeline-link')).toHaveClass(/bg-gray-200/);
+  });
+
+  test.only('Click on progress should navigate to progress', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('progress').click();
+    await expect(page).toHaveURL('#progress');
+    await expect(page.getByTestId('navigation-item-progress-link')).toHaveClass(/bg-gray-2001/);
+  });
 });
