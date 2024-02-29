@@ -13,6 +13,11 @@
     "format": "prettier --write src/",
     "test-ct": "playwright test -c playwright-ct.config.js"
   },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
   "dependencies": {
     "@heroicons/vue": "^2.1.1",
     "unplugin-auto-import": "^0.17.5",
