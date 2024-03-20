@@ -15,13 +15,13 @@ test.describe('TheHeader component test', () => {
     const events = [];
     const component = await mount(TheHeader, {
       on: {
-        'goToTimeline': () => {
-          events.push('goToTimeline');
+        'navigate': () => {
+          events.push('navigate');
         }
       }
     });
     await component.getByTestId('logo').click();
-    await expect(events).toEqual(['goToTimeline']);
+    await expect(events).toEqual(['navigate']);
     await expect(page).toHaveURL('#timeline');
   });
 
@@ -40,13 +40,13 @@ test.describe('TheHeader component test', () => {
     const events = [];
     const component = await mount(TheHeader, {
       on: {
-        'goToProgress': () => {
-          events.push('goToProgress');
+        'navigate': () => {
+          events.push('navigate');
         }
       }
     });
     await component.getByTestId('progress-indicator').click();
-    await expect(events).toEqual(['goToProgress']);
+    await expect(events).toEqual(['navigate']);
     await expect(page).toHaveURL('#progress');
   });
 

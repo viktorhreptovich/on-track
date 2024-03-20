@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-  <h1>The Progress</h1>
+  <div data-testid="progress-page">
+    <h1>The Progress</h1>
+  </div>
 </template>
 
 <style scoped></style>

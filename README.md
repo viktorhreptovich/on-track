@@ -55,5 +55,4 @@ npm run test:e2e -- --debug
 npm run lint
 ```
 
-
-https://youtu.be/ZkIDE0bPq2A?list=PL-FhWbGlJPfaCm9Qx7G9wQqtt2_yBT92V&t=1
+https://youtu.be/JtiWi9Wwn1k?list=PL-FhWbGlJPfaCm9Qx7G9wQqtt2_yBT92V&t=3
