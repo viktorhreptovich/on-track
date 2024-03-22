@@ -9,24 +9,24 @@ export class AddActivityForm {
 
 
   async addActivityButtonShouldBeDisabled() {
-    await test.step('Button "Add an activity" should be disabled', async () => {
+    await test.step('Кнопка "Add an activity" неактивна', async () => {
       await expect(this.button).toBeDisabled();
     });
   }
 
   async addActivityButtonShouldBeEnabled() {
-    await test.step('Button "Add an activity" should be enabled', async () => {
+    await test.step('Кнопка "Add an activity" активна', async () => {
       await expect(this.button).toBeEnabled();
     });
   }
 
   async typeIntoActivityInput(text) {
-    await test.step(`Type into "Add activity input" "${text}"`, async () => {
+    await test.step(`Ввести в поле "Add activity input" текст "${text}"`, async () => {
       await this.input.fill(text);
     });
   }
   async clickAddActivityButton() {
-    await test.step('Click "Add an activity" button', async () => {
+    await test.step('Нажать на "Add an activity"', async () => {
       await this.button.click();
     });
   }

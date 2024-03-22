@@ -7,13 +7,13 @@ export class ProgressPage{
   }
 
   async open() {
-    await test.step('Open the Progress page', async () => {
+    await test.step('Открыть страницу "Progress"', async () => {
       await this.page.goto(this.url);
     });
   }
 
   async shouldBeOpen() {
-    await test.step('The Progress page should be open', async () => {
+    await test.step('Cтраница "Progress" открыта', async () => {
       await expect(this.page).toHaveURL(this.url);
       await expect(this.content).toBeVisible();
     });

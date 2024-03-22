@@ -12,13 +12,13 @@ export class TimelinePage {
 
 
   async open() {
-    await test.step('Open the Timeline page', async () => {
+    await test.step('Открыть страницу "Timeline"', async () => {
       await this.page.goto(this.url);
     });
   }
 
   async shouldBeOpen() {
-    await test.step('The Timeline page should be open', async () => {
+    await test.step('Страница "Timeline" открыта', async () => {
       await expect(this.page).toHaveURL(this.url);
       await expect(this.content).toBeVisible();
     });

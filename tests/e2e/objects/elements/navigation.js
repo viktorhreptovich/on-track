@@ -15,26 +15,26 @@ export class Navigation {
   }
 
   async shouldBeVisible() {
-    await test.step('Navigation should be visible', async () => {
+    await test.step('Меню навигации отображается', async () => {
       await expect(this.locator).toBeVisible();
     });
   }
 
   async shouldHaveItems(items) {
-    await test.step(`Navigation should have items ${items}`, async () => {
+    await test.step(`Меню навигации содержит: ${items}`, async () => {
       await expect(this.locator.getByTestId('navigation-item')).toHaveCount(items.length);
       await expect(this.locator.getByTestId('navigation-item')).toHaveText(items, { useInnerText: true });
     });
   }
 
   async clickTimeline() {
-    await test.step('Click timeline item', async () => {
+    await test.step('Нажать на пункт "timeline" в меню навигации', async () => {
       await this.timelineItem.click();
     });
   }
 
   async timelineShouldHaveIcon() {
-    await test.step('Timeline item should have icon', async () => {
+    await test.step('Пункт "Timeline" в меню имеет иконку', async () => {
       const icon = this.timelineItem.locator('[data-slot="icon"]');
       const box = await icon.boundingBox();
       await expect(this.page).toHaveScreenshot('timeline-icon.png', { clip: box });
@@ -42,13 +42,13 @@ export class Navigation {
   }
 
   async clickActivities() {
-    await test.step('Click activities item', async () => {
+    await test.step('Нажать на пункт "activities" в меню навигации', async () => {
       await this.activitiesItem.click();
     });
   }
 
   async activitiesShouldHaveIcon() {
-    await test.step('Activities item should have icon', async () => {
+    await test.step('Пункт "Activities" в меню имеет иконку', async () => {
       const icon = this.activitiesItem.locator('[data-slot="icon"]');
       const box = await icon.boundingBox();
       await expect(this.page).toHaveScreenshot('activities-icon.png', { clip: box });
@@ -56,13 +56,13 @@ export class Navigation {
   }
 
   async clickProgress() {
-    await test.step('Click progress item', async () => {
+    await test.step('Нажать на пункт "progress" в меню навигации', async () => {
       await this.progressItem.click();
     });
   }
 
   async progressShouldHaveIcon() {
-    await test.step('Progress item should have icon', async () => {
+    await test.step('Пункт "Progress" в меню имеет иконку', async () => {
       const icon = this.progressItem.locator('[data-slot="icon"]');
       const box = await icon.boundingBox();
       await expect(this.page).toHaveScreenshot('progress-icon.png', { clip: box });
@@ -70,37 +70,37 @@ export class Navigation {
   }
   async timelineItemShouldBeActive() {
 
-    await test.step('Timeline item should be active', async () => {
+    await test.step('Пункт "Timeline" в меню активен', async () => {
       await expect(this.timelineItem).toHaveClass(activeClass);
     });
   }
 
   async timelineItemShouldNotBeActive() {
-    await test.step('Timeline item should not be active', async () => {
+    await test.step('Пункт "Timeline" в меню неактивен', async () => {
       await expect(this.timelineItem).not.toHaveClass(activeClass);
     });
   }
 
   async activitiesItemShouldBeActive() {
-    await test.step('Activities item should be active', async () => {
+    await test.step('Пункт "Activities" в меню активен', async () => {
       await expect(this.activitiesItem).toHaveClass(activeClass);
     });
   }
 
   async activitiesItemShouldNotBeActive() {
-    await test.step('Activities item should not be active', async () => {
+    await test.step('Пункт "Activities" в меню неактивен', async () => {
       await expect(this.activitiesItem).not.toHaveClass(activeClass);
     });
   }
 
   async progressItemShouldBeActive() {
-    await test.step('Progress item should be active', async () => {
+    await test.step('Пункт "Progress" в меню активен', async () => {
       await expect(this.progressItem).toHaveClass(activeClass);
     });
   }
 
   async progressItemShouldNotBeActive() {
-    await test.step('Progress item should not be active', async () => {
+    await test.step('Пункт "Progress" в меню неактивен', async () => {
       await expect(this.progressItem).not.toHaveClass(activeClass);
     });
   }

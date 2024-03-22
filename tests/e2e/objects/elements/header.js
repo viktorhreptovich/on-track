@@ -10,19 +10,19 @@ export class Header {
   }
 
   async shouldBeVisible() {
-    await test.step('Header should be visible', async () => {
+    await test.step('Header отображается', async () => {
       await expect(this.locator).toBeVisible();
     });
   }
 
   async clickLogo() {
-    await test.step('Click logo', async () => {
+    await test.step('Нажать на logo', async () => {
       await this.logo.click();
     });
   }
 
   async clickProgress() {
-    await test.step('Click progress', async () => {
+    await test.step('Нажать на progress', async () => {
       await this.progress.click();
     });
   }

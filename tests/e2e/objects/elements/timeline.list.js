@@ -10,7 +10,7 @@ export class TimelineList {
   }
 
   async shouldBeVisible() {
-    await test.step('Timeline list should be visible', async () => {
+    await test.step('Временная лента отображается', async () => {
       await expect(this.locator).toBeVisible();
       const itemsCount = await this.timelineItems.count();
       expect(itemsCount).toBeGreaterThan(0);

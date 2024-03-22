@@ -10,7 +10,7 @@ export class ActivitiesList {
   }
 
   async shouldBeVisible() {
-    await test.step('Activities list should be visible', async () => {
+    await test.step('Список активностей отображается', async () => {
       await expect(this.locator).toBeVisible();
       const itemsCount = await this.activityItems.count();
       expect(itemsCount).toBeGreaterThan(0);
@@ -18,7 +18,7 @@ export class ActivitiesList {
   }
 
   async deleteAllActivities() {
-    await test.step('Delete all activities', async () => {
+    await test.step('Удалить все активности', async () => {
       const itemsCount = await this.activityItems.count();
       for (let i = itemsCount - 1; i >= 0; i--) {
         await this.activityItem(i).clickDeleteButton();
