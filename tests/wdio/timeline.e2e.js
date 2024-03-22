@@ -1,9 +1,9 @@
-import { test } from './base.js';
-import { TimelinePage } from './objects/pages/timeline.page.js';
+import {TimelinePage} from './objects/pages/timeline.page.js';
+import {browser} from '@wdio/globals';
 
-test.describe('Страница Timeline', () => {
-  test('Отображение списка интервалов на странице "Timeline"', async ({ page }) => {
-    const timelinePage = new TimelinePage(page);
+describe('Страница Timeline', () => {
+  it('Отображение списка интервалов на странице "Timeline"', async () => {
+    const timelinePage = new TimelinePage();
 
     await timelinePage.open();
     await timelinePage.timelineList.shouldBeVisible();
@@ -17,8 +17,8 @@ test.describe('Страница Timeline', () => {
     await secondTimelineItem.shouldHaveTimeLink('01:00');
   });
 
-  test('Выбор активности в текущем интервале', async ({ page }) => {
-    const timelinePage = new TimelinePage(page);
+  it('Выбор активности в текущем интервале', async () => {
+    const timelinePage = new TimelinePage();
     const currentHour = new Date().getHours();
 
     await timelinePage.open();
@@ -27,6 +27,5 @@ test.describe('Страница Timeline', () => {
 
     await currentTimelineItem.selectActivity('Reading');
     await currentTimelineItem.shouldHaveSelectedActivity('Reading');
-
   });
 });

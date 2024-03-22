@@ -1,24 +1,23 @@
-import { test } from './base.js';
 import { TimelinePage } from './objects/pages/timeline.page.js';
-import { Navigation } from './objects/elements/navigation.js';
 import { WebApp } from './objects/webapp.js';
+import { Navigation } from './objects/elements/navigation.js';
 import { ActivitiesPage } from './objects/pages/activities.page.js';
 import { ProgressPage } from './objects/pages/progress.page.js';
-import { Header } from './objects/elements/header.js';
 
-test.describe('Меню навигации', () => {
-  test('Меню навигации должно иметь 3 пункта: Timeline, Activities, Progress', async ({ page }) => {
-    const timelinePage = new TimelinePage(page);
-    const navigation = new Navigation(page);
+describe('Меню навигации', () => {
+
+  it('Меню навигации должно иметь 3 пункта: Timeline, Activities, Progress', async () => {
+    const timelinePage = new TimelinePage();
+    const navigation = new Navigation();
 
     await timelinePage.open();
     await navigation.shouldBeVisible();
     await navigation.shouldHaveItems(['Timeline', 'Activities', 'Progress']);
   });
 
-  test('Navigation items should have icons', async ({ page }) => {
-    const timelinePage = new TimelinePage(page);
-    const navigation = new Navigation(page);
+  it('Navigation items should have icons', async () => {
+    const timelinePage = new TimelinePage();
+    const navigation = new Navigation();
 
     await timelinePage.open();
     await navigation.timelineShouldHaveIcon();
@@ -26,12 +25,13 @@ test.describe('Меню навигации', () => {
     await navigation.progressShouldHaveIcon();
   });
 
-  test('Навигация по пунктам меню', async ({ page }) => {
-    const webApp = new WebApp(page);
-    const timelinePage = new TimelinePage(page);
-    const activitiesPage = new ActivitiesPage(page);
-    const progressPage = new ProgressPage(page);
-    const navigation = new Navigation(page);
+  it('Навигация по пунктам меню', async () => {
+    const webApp = new WebApp();
+    const navigation = new Navigation();
+    const timelinePage = new TimelinePage();
+    const activitiesPage = new ActivitiesPage();
+    const progressPage = new ProgressPage();
+
 
     await webApp.open();
 
@@ -53,11 +53,12 @@ test.describe('Меню навигации', () => {
     await navigation.progressItemShouldBeActive();
   });
 
-  test('Переход на страницу Timeline когда hash некорректен', async ({ page }) => {
-    const webApp = new WebApp(page);
-    const timelinePage = new TimelinePage(page);
-    const navigation = new Navigation(page);
+  it('Переход на страницу Timeline когда hash некорректен', async () => {
+    const webApp = new WebApp();
+    const timelinePage = new TimelinePage();
+    const navigation = new Navigation();
 
+    await webApp.open();
     await webApp.navigateTo('/#random-hash');
     await timelinePage.shouldBeOpen();
     await navigation.timelineItemShouldBeActive();
