@@ -69,7 +69,7 @@ jobs:
       - name: Build project
         run: npm run build
       - name: Run webserver
-        run: npm run dev
+        run: npm run dev &
       - name: WebdriverIO tests
         run: npm run wdio
       - name: Get Allure history
