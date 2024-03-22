@@ -81,7 +81,7 @@ jobs:
           path: gh-pages
 
       - name: Allure Report action
-        uses: simple-elf/allure-report-action@1.9
+        uses: simple-elf/allure-report-action@v1.9
         if: always()
         with:
           gh_pages: gh-pages
