@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: lts/*
     - name: Install dependencies
       run: npm install
     - name: Build project
@@ -36,6 +36,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 10
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      if: always()
+      with:
+        path: playwright-report/
       #   Publish report to GitHub Pages
     - name: Setup Pages
       uses: actions/configure-pages@v4
