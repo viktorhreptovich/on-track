@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Tests
 on:
   push:
     branches: [ main, master ]
@@ -68,6 +68,8 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build
+      - name: Run webserver
+        run: npm run dev
       - name: WebdriverIO tests
         run: npm run wdio
       - name: Get Allure history
