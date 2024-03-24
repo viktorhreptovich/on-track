@@ -40,6 +40,7 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       if: always()
       with:
+        name: github-pages-playwright-report
         path: playwright-report/
       #   Publish report to GitHub Pages
     - name: Setup Pages
