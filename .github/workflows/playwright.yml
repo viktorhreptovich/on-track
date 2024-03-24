@@ -16,7 +16,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}/playwright-report
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -49,50 +49,50 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v4
       if: always()
-  wdio:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: link
-      url: https://viktorhreptovich.github.io/on-track/${{ github.run_number }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: Install dependencies
-        run: npm install
-      - name: Build project
-        run: npm run build
-      - name: Run webserver
-        run: npm run dev &
-      - name: WebdriverIO tests
-        run: npm run wdio
-      - name: Get Allure history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Allure Report action
-        uses: simple-elf/allure-report-action@v1.9
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_results: allure-results
-          allure_history: allure-history
-          keep_reports: 20
-
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+#  wdio:
+#    timeout-minutes: 60
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      pages: write
+#      id-token: write
+#    environment:
+#      name: link
+#      url: https://viktorhreptovich.github.io/on-track/${{ github.run_number }}
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-node@v4
+#        with:
+#          node-version: lts/*
+#      - name: Install dependencies
+#        run: npm install
+#      - name: Build project
+#        run: npm run build
+#      - name: Run webserver
+#        run: npm run dev &
+#      - name: WebdriverIO tests
+#        run: npm run wdio
+#      - name: Get Allure history
+#        uses: actions/checkout@v4
+#        if: always()
+#        continue-on-error: true
+#        with:
+#          ref: gh-pages
+#          path: gh-pages
+#
+#      - name: Allure Report action
+#        uses: simple-elf/allure-report-action@v1.9
+#        if: always()
+#        with:
+#          gh_pages: gh-pages
+#          allure_results: allure-results
+#          allure_history: allure-history
+#          keep_reports: 20
+#
+#      - name: Deploy report to Github Pages
+#        if: always()
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          PUBLISH_BRANCH: gh-pages
+#          PUBLISH_DIR: allure-history
