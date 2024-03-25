@@ -31,7 +31,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     // ['json',{ outputFile: 'results.json' }],
-    ['html', { outputFolder: 'reports/playwright-report' }]
+    ['html']
     // ['./tests/my-awesome-reporter.cjs', { customOption: 'some value' }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
