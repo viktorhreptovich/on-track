@@ -42,8 +42,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          name: github-pages-playwright
-          path: reports
+          name: github-pages
+          path: reports/playwright-report
 
   webdriverio-test:
     timeout-minutes: 60
@@ -105,13 +105,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - name: Merge Artifacts
-        uses: actions/upload-artifact/merge@v4
-        with:
-          name: github-pages
-          pattern: github-pages-*
-#          separate-directories: true
-          delete-merged: true
+#      - name: Merge Artifacts
+#        uses: actions/upload-artifact/merge@v4
+#        with:
+#          name: github-pages
+#          pattern: github-pages-*
+##          separate-directories: true
+#          delete-merged: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
         if: always()
