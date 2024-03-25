@@ -43,7 +43,7 @@ jobs:
         if: always()
         with:
           name: github-pages
-          path: reports/playwright-report
+          path: reports
 
   webdriverio-test:
     timeout-minutes: 60
@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          name: github-pages-allure-report
+          name: github-pages
           path: reports
 
   deploy-reports:
