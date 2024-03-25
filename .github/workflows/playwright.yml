@@ -43,7 +43,7 @@ jobs:
         if: always()
         with:
           name: github-pages-playwright
-          path: reports/playwright-report
+          path: reports
 
         #   Publish report to GitHub Pages
     #    - name: Setup Pages
@@ -100,7 +100,7 @@ jobs:
         if: always()
         with:
           name: github-pages-allure-report
-          path: reports/allure-history/
+          path: reports
 
   deploy-reports:
     permissions:
@@ -116,7 +116,11 @@ jobs:
         with:
           name: github-pages
           pattern: github-pages-*
-#          delete-merged: true
+          separate-directories: true
+          delete-merged: true
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        if: always()
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
