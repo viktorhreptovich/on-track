@@ -45,18 +45,6 @@ jobs:
           name: github-pages-playwright
           path: reports
 
-        #   Publish report to GitHub Pages
-    #    - name: Setup Pages
-    #      uses: actions/configure-pages@v4
-    #      if: always()
-    #
-    #    - name: Deploy to GitHub Pages
-    #      id: deployment
-    #      uses: actions/deploy-pages@v4
-    #      with:
-    #        artifact_name: github-pages
-    #      if: always()
-
   webdriverio-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -105,6 +93,7 @@ jobs:
   deploy-reports:
     environment:
       name: github-pages
+      url:  ${{ steps.deployment.outputs.page_url }}
     permissions:
       contents: read
       pages: write
@@ -121,7 +110,7 @@ jobs:
         with:
           name: github-pages
           pattern: github-pages-*
-          separate-directories: true
+#          separate-directories: true
           delete-merged: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
