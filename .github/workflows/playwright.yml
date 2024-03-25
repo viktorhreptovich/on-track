@@ -63,7 +63,13 @@ jobs:
     environment:
       name: link
       url: ${{ steps.deployment.outputs.page_url }}/allure-report
-#    steps:
+    steps:
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      if: always()
+      with:
+        name: github-pages
+        path: src/
 #      - uses: actions/checkout@v4
 #      - uses: actions/setup-node@v4
 #        with:
