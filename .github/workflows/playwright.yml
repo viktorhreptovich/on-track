@@ -30,20 +30,20 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
-      - name: Upload
-        id: upload
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 10
+#      - name: Upload
+#        id: upload
+#        uses: actions/upload-artifact@v4
+#        if: always()
+#        with:
+#          name: playwright-report
+#          path: playwright-report/
+#          retention-days: 10
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         if: always()
         with:
           name: github-pages-playwright
-          path: report/
+          path: reports/playwright-report
 
         #   Publish report to GitHub Pages
     #    - name: Setup Pages
@@ -68,12 +68,6 @@ jobs:
       name: link
       url: ${{ github.server_url }}/${{ github.repository }}/allure-report
     steps:
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        if: always()
-        with:
-          name: github-pages
-          path: src/
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -111,6 +105,7 @@ jobs:
   deploy-reports:
     runs-on: ubuntu-latest
     needs: [ playwright-test, webdriverio-test ]
+    if: always()
     steps:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@v4
