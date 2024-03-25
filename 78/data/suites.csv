@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Mar 25 19:53:42 GMT 2024","Mon Mar 25 19:53:43 GMT 2024","1145","","Меню навигации","","","","Меню навигации должно иметь 3 пункта: Timeline, Activities, Progress",""
+"passed","Mon Mar 25 19:53:43 GMT 2024","Mon Mar 25 19:53:44 GMT 2024","365","","Меню навигации","","","","Navigation items should have icons",""
+"passed","Mon Mar 25 19:53:46 GMT 2024","Mon Mar 25 19:53:46 GMT 2024","214","","Страница Timeline","","","","Выбор активности в текущем интервале",""
+"passed","Mon Mar 25 19:53:44 GMT 2024","Mon Mar 25 19:53:44 GMT 2024","191","","Меню навигации","","","","Переход на страницу Timeline когда hash некорректен",""
+"passed","Mon Mar 25 19:53:44 GMT 2024","Mon Mar 25 19:53:44 GMT 2024","483","","Меню навигации","","","","Навигация по пунктам меню",""
+"passed","Mon Mar 25 19:53:46 GMT 2024","Mon Mar 25 19:53:46 GMT 2024","326","","Страница Timeline","","","","Отображение списка интервалов на странице ""Timeline""",""
