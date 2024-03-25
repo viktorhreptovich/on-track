@@ -83,7 +83,7 @@ jobs:
         if: always()
         with:
           name: allure
-          path: reports
+          path: allure-history
 
   deploy-reports:
     environment:
