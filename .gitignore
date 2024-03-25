@@ -30,13 +30,13 @@ coverage
 *.tsbuildinfo
 
 test-results/
-playwright-report/
+app/playwright-report/
 /test-results/
-/playwright-report/
+/app/playwright-report/
 /blob-report/
 /playwright/.cache/
 /test-results/
-/playwright-report/
+/app/playwright-report/
 /blob-report/
 /playwright/.cache/
 /package-lock.json
