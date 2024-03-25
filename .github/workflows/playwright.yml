@@ -50,12 +50,12 @@ jobs:
 #      uses: actions/configure-pages@v4
 #      if: always()
 
-#    - name: Deploy to GitHub Pages
-#      id: deployment
-#      uses: actions/deploy-pages@v4
-#      with:
-#        artifact_name: github-pages
-#      if: always()
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      with:
+        artifact_name: github-pages
+      if: always()
 
 #  wdio:
 #    timeout-minutes: 60
