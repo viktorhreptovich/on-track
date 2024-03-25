@@ -110,7 +110,7 @@ jobs:
 
   deploy-reports:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [ playwright-test, webdriverio-test ]
     steps:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@v4
