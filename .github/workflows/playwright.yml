@@ -103,6 +103,8 @@ jobs:
           path: reports
 
   deploy-reports:
+    environment:
+      name: github-pages
     permissions:
       contents: read
       pages: write
@@ -119,6 +121,7 @@ jobs:
         with:
           name: github-pages
           pattern: github-pages-*
+          separate-directories: true
           delete-merged: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
