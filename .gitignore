@@ -33,9 +33,6 @@ test-results/
 /test-results/
 /blob-report/
 /playwright/.cache/
-/test-results/
-/blob-report/
-/playwright/.cache/
 /package-lock.json
 /allure-results/
 /reports/
