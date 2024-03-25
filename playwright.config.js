@@ -30,8 +30,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['json',{ outputFile: 'results.json' }],
-    ['html']
+    // ['json',{ outputFile: 'results.json' }],
+    ['html', { outputFolder: 'reports/playwright-report' }]
     // ['./tests/my-awesome-reporter.cjs', { customOption: 'some value' }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -42,7 +42,7 @@ export default defineConfig({
     baseURL: 'http://localhost:5173',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
 
     /* Only on CI systems run the tests headless */
     // headless: !!process.env.CI
@@ -55,7 +55,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome']
       }
-    },
+    }
     // {
     //   name: 'firefox',
     //   use: {
