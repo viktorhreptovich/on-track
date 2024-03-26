@@ -36,7 +36,16 @@ test.describe('Работа с активностями', () => {
 
     });
 
-  test('Add new activity in timeline item select options', async ({ page }) => {
+  test('Удаление всех активностей', async ({ page }) => {
+    const activitiesPage = new ActivitiesPage(page);
+
+    await activitiesPage.open();
+    await activitiesPage.activitiesList.shouldBeVisible();
+
+    await activitiesPage.activitiesList.deleteAllActivities();
+  });
+
+  test('Отображение активности в выпадающем списке временного интервала после добавления', async ({ page }) => {
     const timelinePage = new TimelinePage(page);
     const activitiesPage = new ActivitiesPage(page);
 
@@ -47,15 +56,6 @@ test.describe('Работа с активностями', () => {
     await timelinePage.open();
     const firstTimelineItem = await timelinePage.timelineList.timelineItem(1);
     await firstTimelineItem.shouldHaveActivitySelectOptions(['Rest', 'Coding', 'Reading', 'Training', 'Test']);
-  });
-
-  test('Удаление всех активностей', async ({ page }) => {
-    const activitiesPage = new ActivitiesPage(page);
-
-    await activitiesPage.open();
-    await activitiesPage.activitiesList.shouldBeVisible();
-
-    await activitiesPage.activitiesList.deleteAllActivities();
   });
 
 });

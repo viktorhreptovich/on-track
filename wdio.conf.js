@@ -36,4 +36,7 @@ export const config = {
     ui: 'bdd',
     timeout: 60000
   },
+  afterTest: async () => {
+    await browser.reloadSession();
+  }
 };

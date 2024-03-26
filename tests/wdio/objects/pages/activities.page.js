@@ -2,10 +2,14 @@ import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import { $, browser } from '@wdio/globals';
 import Page from '../page.js';
+import { ActivitiesList } from '../elements/activities.list.js';
+import { AddActivityForm } from '../form/add-activity.form.js';
 
 export class ActivitiesPage extends Page {
   get url() { return '/#activities'; }
   get content() { return $('[data-testid="activities-page"]'); }
+  get activitiesList() { return new ActivitiesList(); }
+  get activityForm() { return new AddActivityForm(); }
 
   async open() {
     await step('Открыть страницу "Activities"', async () => {

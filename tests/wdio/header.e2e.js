@@ -4,7 +4,7 @@ import { Header } from './objects/elements/header.js';
 import { ProgressPage } from './objects/pages/progress.page.js';
 import { ActivitiesPage } from './objects/pages/activities.page.js';
 
-describe('Меню навигации', () => {
+describe('Header', () => {
 
   it('При клике на logo должен быть выполнен переход на страницу timeline', async () => {
     const timelinePage = new TimelinePage();

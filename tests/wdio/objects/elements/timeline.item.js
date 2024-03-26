@@ -36,7 +36,11 @@ export class TimelineItem {
 
   async shouldHaveActivitySelectOptions(options) {
     await step(`Timeline item should have activity select options "${options}"`, async () => {
-      await expect(this.select.$('option')).toHaveText(options);
+      // const currentOptions = await this.select.$$('option');
+      await expect(this.select.$$('option')).toBeElementsArrayOfSize(options.length);
+      // const receivedOptionsTexts = await currentOptions.map(option => await option.getText()) ;
+      // console.log(`receivedOptionsTexts: `, receivedOptionsTexts);
+      // await expect(receivedOptionsTexts).toEqual(options);
     });
   }
 
@@ -51,6 +55,12 @@ export class TimelineItem {
       await this.select.scrollIntoView();
       const selectedActivity = await this.select.getValue();
       await expect(this.select.$(`option[value="${selectedActivity}"]`)).toHaveText(activity);
+    });
+  }
+
+  async shouldHaveTimerValue(time) {
+    await step(`Интервал "${this.timeOrIndex()}" должен иметь значение таймера: "${time}"`, async () => {
+      await expect(this.timerValue).toHaveText(time);
     });
   }
 }

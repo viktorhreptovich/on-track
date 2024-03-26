@@ -1,0 +1,33 @@
+import { step } from '@wdio/allure-reporter';
+import { expect } from 'expect-webdriverio';
+
+export class AddActivityForm{
+  get locator() { return $('[data-testid="add-activity-form"]'); }
+  get input() { return this.locator.$('[data-testid="add-activity-input"]'); }
+  get button() { return this.locator.$('[data-testid="add-activity-button"]'); }
+
+  async addActivityButtonShouldBeDisabled() {
+    await step('Кнопка "Add an activity" неактивна', async () => {
+      await expect(this.button).toBeDisabled();
+    });
+  }
+
+  async addActivityButtonShouldBeEnabled() {
+    await step('Кнопка "Add an activity" активна', async () => {
+      await expect(this.button).toBeEnabled();
+    });
+  }
+
+  async typeIntoActivityInput(text) {
+    await step(`Ввести в поле "Add activity input" текст "${text}"`, async () => {
+      await this.input.setValue(text);
+    });
+  }
+
+  async clickAddActivityButton() {
+    await step('Нажать на "Add an activity"', async () => {
+      await this.button.click();
+    });
+  }
+
+}
