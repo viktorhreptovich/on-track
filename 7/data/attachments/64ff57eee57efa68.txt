@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//li[@data-testid=\"activity-item\" and //*[text()=\"Test\"]]"
+}
