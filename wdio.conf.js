@@ -1,8 +1,10 @@
+import { step } from './tests/wdio/allure.step.js';
+
 export const config = {
   runner: 'local',
 
   specs: [
-    './tests/wdio/*.js'
+    ['./tests/wdio/*.js']
   ],
   exclude: [
     // 'path/to/excluded/files'
@@ -28,7 +30,7 @@ export const config = {
     'spec',
     ['allure', {
       outputDir: 'allure-results',
-      disableWebdriverStepsReporting: true,
+      disableWebdriverStepsReporting: false,
       disableWebdriverScreenshotsReporting: true
     }]
   ],
@@ -36,7 +38,10 @@ export const config = {
     ui: 'bdd',
     timeout: 60000
   },
-  afterTest: async () => {
-    await browser.reloadSession();
+
+  afterTest: async () =>{
+    await step('Закрыть браузер', async () => {
+      await browser.reloadSession();
+    });
   }
 };

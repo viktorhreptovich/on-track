@@ -1,8 +1,7 @@
 import { ActivityItem } from './activity.item.js';
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import { $ } from '@wdio/globals';
-import { text } from 'node:stream/consumers';
+import { step } from '../../allure.step.js';
 
 export class ActivitiesList {
 
@@ -20,7 +19,7 @@ export class ActivitiesList {
     await step('Список активностей отображается', async () => {
       await expect(this.locator).toBeDisplayed();
       const itemsCount = await this.activityItems.length;
-      expect(itemsCount).toBeGreaterThan(0);
+      await expect(itemsCount).toBeGreaterThan(0);
     });
   }
 

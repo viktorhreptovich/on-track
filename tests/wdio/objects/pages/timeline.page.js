@@ -1,8 +1,8 @@
-import { step } from '@wdio/allure-reporter';
 import { $, browser } from '@wdio/globals';
 import { expect } from 'expect-webdriverio';
 import Page from '../page.js';
 import { TimelineList } from '../elements/timeline.list.js';
+import { step } from '../../allure.step.js';
 
 
 export class TimelinePage extends Page {
@@ -13,7 +13,7 @@ export class TimelinePage extends Page {
 
   async open() {
     await step('Открыть страницу "Timeline"', async () => {
-      await super.open(this.url);
+      await browser.url(this.url);
     });
   }
 

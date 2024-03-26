@@ -1,6 +1,6 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import { $ } from '@wdio/globals';
+import { step } from '../../allure.step.js';
 
 export class Header {
   get locator() { return $('[data-testid="header"]'); }
@@ -9,7 +9,7 @@ export class Header {
 
   async shouldBeVisible() {
     await step('Header отображается', async () => {
-      expect(await this.locator).toBeDisplayed();
+      await expect(await this.locator).toBeDisplayed();
     });
   }
 

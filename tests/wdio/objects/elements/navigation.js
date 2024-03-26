@@ -1,6 +1,6 @@
 import { $ } from '@wdio/globals';
 import { expect } from 'expect-webdriverio';
-import { step } from '@wdio/allure-reporter';
+import { step } from '../../allure.step.js';
 
 const activeClass = /bg-gray-200/;
 
@@ -12,14 +12,15 @@ export class Navigation {
 
   async shouldBeVisible() {
     await step('Меню навигации отображается', async () => {
-      expect(await this.locator).toBeDisplayed();
+      await expect(this.locator).toBeDisplayed();
     });
   }
 
   async shouldHaveItems(items) {
     await step(`Меню навигации содержит: ${items}`, async () => {
-      expect(await this.locator.$('[data-testid="navigation-item"]')).toHaveSize(items.length);
-      expect(await this.locator.$('[data-testid="navigation-item"]')).toHaveText(items, { useInnerText: true });
+      await expect(await this.locator.$$('[data-testid="navigation-item"]')).toBeElementsArrayOfSize(items.length);
+      const itemsTexts = await this.locator.$$('[data-testid="navigation-item"]').map(item => item.getText());
+      await expect(itemsTexts).toEqual(items);
     });
   }
 
@@ -31,13 +32,13 @@ export class Navigation {
 
   async timelineItemShouldBeActive() {
     await step('Пункт "timeline" в меню активен', async () => {
-      expect(await this.timelineItem).toHaveElementClass(activeClass);
+      await expect(await this.timelineItem).toHaveElementClass(activeClass);
     });
   }
 
   async timelineItemShouldNotBeActive() {
     await step('Пункт "timeline" в меню неактивен', async () => {
-      expect(await this.timelineItem).not.toHaveElementClass(activeClass);
+      await expect(await this.timelineItem).not.toHaveElementClass(activeClass);
     });
   }
 

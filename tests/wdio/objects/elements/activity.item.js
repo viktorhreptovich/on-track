@@ -1,5 +1,5 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
+import { step } from '../../allure.step.js';
 
 export class ActivityItem {
   get nameText() { return this.locator.$('[data-testid="activity-item-name"]'); }

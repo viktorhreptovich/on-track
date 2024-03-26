@@ -1,5 +1,5 @@
 import { browser } from '@wdio/globals';
-import { step } from '@wdio/allure-reporter';
+import { step } from '../allure.step.js';
 
 /**
  * main page object containing all methods, selectors and functionality
@@ -12,7 +12,9 @@ export default class Page {
    * @param path path of the sub page (e.g. /path/to/page.html)
    */
   async open(path) {
-    return browser.url(`${path}`);
+    await step(`Открыть cтраницу с адресом ${path}`, async () => {
+      await browser.url(`${path}`);
+    });
   }
 
   async navigateTo(url) {

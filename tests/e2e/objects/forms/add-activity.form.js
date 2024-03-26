@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 export class AddActivityForm {
-  constructor(locator) {
-    this.locator = locator;
+  constructor(page) {
+    this.locator = page.getByTestId('add-activity-form');
     this.input = this.locator.getByTestId('add-activity-input');
     this.button = this.locator.getByTestId('add-activity-button');
   }

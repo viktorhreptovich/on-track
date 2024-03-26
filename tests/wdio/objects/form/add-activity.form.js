@@ -1,6 +1,6 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import { $ } from '@wdio/globals';
+import { step } from '../../allure.step.js';
 
 export class AddActivityForm {
   get locator() { return $('[data-testid="add-activity-form"]'); }

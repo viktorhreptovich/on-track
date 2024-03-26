@@ -1,7 +1,7 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import Page from '../page.js';
 import { browser } from '@wdio/globals';
+import { step } from '../../allure.step.js';
 
 export class ProgressPage extends Page {
 

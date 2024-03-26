@@ -1,6 +1,6 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
 import { TimelineItem } from './timeline.item.js';
+import { step } from '../../allure.step.js';
 
 export class TimelineList {
   get timelineItems() { return this.locator.$$('[data-testid="timeline-item"]'); }

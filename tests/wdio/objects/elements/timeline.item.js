@@ -1,5 +1,5 @@
-import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
+import { step } from '../../allure.step.js';
 
 export class TimelineItem {
   get timeLink() { return this.locator.$('[data-testid="timeline-item-link"]'); }
@@ -36,11 +36,10 @@ export class TimelineItem {
 
   async shouldHaveActivitySelectOptions(options) {
     await step(`Timeline item should have activity select options "${options}"`, async () => {
-      // const currentOptions = await this.select.$$('option');
       await expect(this.select.$$('option')).toBeElementsArrayOfSize(options.length);
-      // const receivedOptionsTexts = await currentOptions.map(option => await option.getText()) ;
-      // console.log(`receivedOptionsTexts: `, receivedOptionsTexts);
-      // await expect(receivedOptionsTexts).toEqual(options);
+      const currentOptions = await this.select.$$('option');
+      const receivedOptionsTexts = await currentOptions.map(option => option.getText()) ;
+      await expect(receivedOptionsTexts).toEqual(options);
     });
   }
 
