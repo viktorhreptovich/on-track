@@ -11,7 +11,6 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       pages: write
       id-token: write
     environment:
@@ -58,7 +57,7 @@ jobs:
       - name: WebdriverIO tests
         run: npm run wdio
       - name: Get Allure history
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
@@ -78,13 +77,6 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-#      - name: Upload report
-#        uses: actions/upload-artifact@v4
-#        if: always()
-#        with:
-#          name: allure
-#          path: allure-history/
-#          retention-days: 1
       - name: Upload report allure
         uses: actions/upload-artifact@v4
         if: always()
@@ -92,7 +84,6 @@ jobs:
           name: allure-report
           path: allure-report/
           retention-days: 1
-
 
   deploy-reports:
     environment:
@@ -110,8 +101,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: reports
-      - name: Display structure of downloaded files
-        run: ls -R reports
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         if: always()
