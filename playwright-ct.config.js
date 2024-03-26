@@ -36,7 +36,7 @@ export default defineConfig({
 
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
-    headless: false,
+    headless: !!process.env.CI,
 
     ctViteConfig: {
       plugins: [
