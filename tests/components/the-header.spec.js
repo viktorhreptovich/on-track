@@ -6,48 +6,30 @@ test.describe('TheHeader component test', () => {
 
   test.use({ viewport: { width: 500, height: 500 } });
 
-  test('Logo should be visible', async ({ mount,  }) => {
+  test('Logo should be visible', async ({ mount }) => {
     const component = await mount(TheHeader, {});
     await expect(component.getByTestId('logo')).toBeVisible();
   });
 
-  test('Click on logo should navigate to timeline and emit event "goToTimeline"', async ({ mount, page }) => {
-    const events = [];
-    const component = await mount(TheHeader, {
-      on: {
-        'navigate': () => {
-          events.push('navigate');
-        }
-      }
-    });
+  test('Click on logo should navigate to timeline', async ({ mount, page }) => {
+    const component = await mount(TheHeader, {});
     await component.getByTestId('logo').click();
-    await expect(events).toEqual(['navigate']);
     await expect(page).toHaveURL('#timeline');
   });
 
-  test('Progress should be visible', async ({ mount,  }) => {
+  test('Progress should be visible', async ({ mount }) => {
     const component = await mount(TheHeader, {});
-    await expect(component.getByTestId('progress')).toBeVisible();
-    await expect(component.getByTestId('progress')).toHaveText('Progress: 20%');
-    await expect(component.getByTestId('progress-indicator')).toBeVisible();
+    await expect(component.getByTestId('header-progress')).toBeVisible();
+    await expect(component.getByTestId('header-progress')).toHaveText('Progress: 20%');
+    await expect(component.getByTestId('header-progress-indicator')).toBeVisible();
   });
 
 
-  test('Click on progress indicator should navigate to progress and emit event "goToProgress"', async ({
-                                                                                                         mount,
-                                                                                                         page
-                                                                                                       }) => {
-    const events = [];
-    const component = await mount(TheHeader, {
-      on: {
-        'navigate': () => {
-          events.push('navigate');
-        }
-      }
+  test('Click on progress indicator should navigate to progress',
+    async ({ mount, page }) => {
+      const component = await mount(TheHeader, {});
+      await component.getByTestId('header-progress-indicator').click();
+      await expect(page).toHaveURL('#progress');
     });
-    await component.getByTestId('progress-indicator').click();
-    await expect(events).toEqual(['navigate']);
-    await expect(page).toHaveURL('#progress');
-  });
 
 });

@@ -14,7 +14,6 @@ export function normalizePageHash() {
   return NAVIGATION_ITEMS.TIME_LINE.name;
 }
 export function navigate(page) {
-  console.log(page);
   if (currentPage.value === NAVIGATION_ITEMS.TIME_LINE.name && page === NAVIGATION_ITEMS.TIME_LINE.name) {
     timelineRef.value.scrollToHour();
   } else if (page !== NAVIGATION_ITEMS.TIME_LINE.name) {
