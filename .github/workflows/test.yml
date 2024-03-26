@@ -45,7 +45,7 @@ jobs:
       id-token: write
     environment:
       name: playwright-report
-      url: https://viktorhreptovich.github.io/on-track/playwright-report
+      url: https://viktorhreptovich.github.io/on-track/playwright-report-ct
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
