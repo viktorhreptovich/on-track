@@ -1,10 +1,28 @@
 import { step } from '@wdio/allure-reporter';
 import { expect } from 'expect-webdriverio';
+import { $ } from '@wdio/globals';
 
-export class AddActivityForm{
+export class AddActivityForm {
   get locator() { return $('[data-testid="add-activity-form"]'); }
   get input() { return this.locator.$('[data-testid="add-activity-input"]'); }
   get button() { return this.locator.$('[data-testid="add-activity-button"]'); }
+
+  async shouldBeVisible() {
+    await step('Форма "Add an activity" отображается', async () => {
+      await expect(this.locator).toBeDisplayed();
+    });
+  }
+
+  async activityInputShouldBeVisible() {
+    await step('Поле "Add activity input" отображается', async () => {
+      await expect(this.input).toBeDisplayed();
+    });
+  }
+  async typeIntoActivityInput(text) {
+    await step(`Ввести в поле "Add activity input" текст "${text}"`, async () => {
+      await this.input.setValue(text);
+    });
+  }
 
   async addActivityButtonShouldBeDisabled() {
     await step('Кнопка "Add an activity" неактивна', async () => {
@@ -18,16 +36,14 @@ export class AddActivityForm{
     });
   }
 
-  async typeIntoActivityInput(text) {
-    await step(`Ввести в поле "Add activity input" текст "${text}"`, async () => {
-      await this.input.setValue(text);
+  async addActivityButtonShouldBeVisible() {
+    await step('Кнопка "Add an activity" отображается', async () => {
+      await expect(this.button).toBeDisplayed();
     });
   }
-
   async clickAddActivityButton() {
     await step('Нажать на "Add an activity"', async () => {
       await this.button.click();
     });
   }
-
 }
