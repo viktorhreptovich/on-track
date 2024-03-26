@@ -38,3 +38,5 @@ test-results/
 /reports/
 /.tmp/
 /allure-report/
+/playwright-report/
+/playwright-report-ct/
