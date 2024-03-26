@@ -15,7 +15,7 @@ describe('Меню навигации', () => {
     await navigation.shouldHaveItems(['Timeline', 'Activities', 'Progress']);
   });
 
-  it('Navigation items should have icons', async () => {
+  it('Пункты меню должны иметь иконки', async () => {
     const timelinePage = new TimelinePage();
     const navigation = new Navigation();
 

@@ -4,7 +4,6 @@ import { Navigation } from './objects/elements/navigation.js';
 import { WebApp } from './objects/webapp.js';
 import { ActivitiesPage } from './objects/pages/activities.page.js';
 import { ProgressPage } from './objects/pages/progress.page.js';
-import { Header } from './objects/elements/header.js';
 
 test.describe('Меню навигации', () => {
   test('Меню навигации должно иметь 3 пункта: Timeline, Activities, Progress', async ({ page }) => {
@@ -16,7 +15,7 @@ test.describe('Меню навигации', () => {
     await navigation.shouldHaveItems(['Timeline', 'Activities', 'Progress']);
   });
 
-  test('Navigation items should have icons', async ({ page }) => {
+  test('Пункты меню должны иметь иконки', async ({ page }) => {
     const timelinePage = new TimelinePage(page);
     const navigation = new Navigation(page);
 
