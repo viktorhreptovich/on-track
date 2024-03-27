@@ -4,8 +4,8 @@ import { step } from '../../allure.step.js';
 
 export class AddActivityForm {
   get locator() { return $('[data-testid="add-activity-form"]'); }
-  get input() { return $('[data-testid="add-activity-input"]'); }
-  get button() { return $('[data-testid="add-activity-button"]'); }
+  get input() { return this.locator.$('[data-testid="add-activity-input"]'); }
+  get button() { return this.locator.$('[data-testid="add-activity-button"]'); }
 
   async shouldBeVisible() {
     await step('Форма "Add an activity" отображается', async () => {
