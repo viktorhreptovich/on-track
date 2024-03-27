@@ -3,8 +3,8 @@ import { expect, test } from '@playwright/test';
 export class AddActivityForm {
   constructor(page) {
     this.locator = page.getByTestId('add-activity-form');
-    this.input = this.locator.getByTestId('add-activity-input');
-    this.button = this.locator.getByTestId('add-activity-button');
+    this.input = page.getByTestId('add-activity-input');
+    this.button = page.getByTestId('add-activity-button');
   }
 
   async shouldBeVisible() {
