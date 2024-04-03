@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//li[@data-testid=\"activity-item\" and //*[text()=\"Coding\"]]\"}\n  (Session info: chrome-headless-shell=123.0.6312.86)",
+  "stacktrace": "#0 0x5636c3f418a3 <unknown>\n#1 0x5636c3c378c6 <unknown>\n#2 0x5636c3c82618 <unknown>\n#3 0x5636c3c826d1 <unknown>\n#4 0x5636c3c76fa6 <unknown>\n#5 0x5636c3ca45cd <unknown>\n#6 0x5636c3c76e98 <unknown>\n#7 0x5636c3ca476e <unknown>\n#8 0x5636c3cc2c19 <unknown>\n#9 0x5636c3ca4343 <unknown>\n#10 0x5636c3c75593 <unknown>\n#11 0x5636c3c75f5e <unknown>\n#12 0x5636c3f0588b <unknown>\n#13 0x5636c3f097e5 <unknown>\n#14 0x5636c3ef35b1 <unknown>\n#15 0x5636c3f0a372 <unknown>\n#16 0x5636c3ed88bf <unknown>\n#17 0x5636c3f30768 <unknown>\n#18 0x5636c3f3093b <unknown>\n#19 0x5636c3f409f4 <unknown>\n#20 0x7fc181a94ac3 <unknown>\n"
+}
